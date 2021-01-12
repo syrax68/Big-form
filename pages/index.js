@@ -3,13 +3,14 @@ import { Client, manageLocal } from 'utils/prismicHelpers';
 import { homepageToolbarDocs } from 'utils/prismicToolbarQueries'
 import useUpdatePreviewRef from 'utils/hooks/useUpdatePreviewRef';
 import useUpdateToolbarDocs from 'utils/hooks/useUpdateToolbarDocs';
-import { Layout, SliceZone } from 'components'
+import { Layout, SliceZone } from 'components';
+import { RichText } from 'prismic-reactjs';
 
 /**
  * Homepage component
  */
 const Homepage = ({ doc, menu, lang, preview }) => {
-
+  console.log(doc)
   if (doc && doc.data) {
 
     useUpdatePreviewRef(preview, doc.id)
@@ -22,7 +23,7 @@ const Homepage = ({ doc, menu, lang, preview }) => {
         menu={menu}
         isPreview={preview.isActive}
       >
-        <SliceZone sliceZone={doc.data.body} />
+        <h1>{RichText.asText(doc.data.who)}</h1>
       </Layout>
     );
   } 
@@ -38,7 +39,7 @@ export async function getStaticProps({
   const isPreview = preview || false
   const client = Client();
   const doc =
-    (await client.getSingle('homepage', ref ? { ref, lang: locale } : { lang: locale })) ||
+    (await client.getSingle('big_form', ref ? { ref, lang: locale } : { lang: locale })) ||
     {};
   const menu =
     (await client.getSingle('top_menu', ref ? { ref, lang: locale } : { lang: locale })) ||

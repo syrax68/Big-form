@@ -14,7 +14,6 @@ const Header = ({ menu, altLangs }) => (
       </div>
       <div className="menu">
         <ul>
-          <Navigation menu={menu} />
           <LanguageSwitcher altLangs={altLangs} />
         </ul>
       </div>
