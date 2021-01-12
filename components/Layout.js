@@ -2,7 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 import { prismicRepoName } from 'utils/prismicHelpers';
 import Header from './Header';
-import Footer from './Footer';
 import ExitPreviewButton from './ExitPreviewButton'
 
 const Layout = ({
@@ -30,7 +29,6 @@ const Layout = ({
     />
     <main>{children}</main>
     {isPreview ? <ExitPreviewButton /> : null}
-    <Footer />
   </>
 );
 

@@ -1,29 +1,24 @@
 import React from 'react';
 import { queryRepeatableDocuments } from 'utils/queries';
 import { Client, manageLocal } from 'utils/prismicHelpers';
-import { pageToolbarDocs } from 'utils/prismicToolbarQueries'
 import useUpdatePreviewRef from 'utils/hooks/useUpdatePreviewRef';
-import useUpdateToolbarDocs from 'utils/hooks/useUpdateToolbarDocs';
-import { Layout, SliceZone } from 'components';
+import { Layout } from 'components';
 
 /**
  * posts component
  */
-const Page = ({ doc, menu, lang, preview }) => {
+const Page = ({ doc, lang, preview }) => {
 
   if (doc && doc.data) {
 
     useUpdatePreviewRef(preview, doc.id)
-    useUpdateToolbarDocs(pageToolbarDocs(doc.uid, preview.activeRef, doc.lang), [doc])
    
     return (
       <Layout
         altLangs={doc.alternate_languages}
         lang={lang}
-        menu={menu}
         isPreview={preview.isActive}
       >
-        <SliceZone sliceZone={doc.data.body} />
       </Layout>
     );
   }
@@ -45,15 +40,10 @@ export async function getStaticProps({
       params.uid,
       ref ? { ref, lang: locale } : { lang: locale }
     )) || {};
-  const menu =
-    (await client.getSingle('top_menu', ref ? { ref, lang: locale } : { lang: locale })) ||
-    {};
-
   const { currentLang, isMyMainLanguage } = manageLocal(locales, locale)
 
   return {
     props: {
-      menu,
       doc,
       preview: {
         isActive: isPreview,
