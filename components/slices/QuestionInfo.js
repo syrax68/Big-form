@@ -4,13 +4,14 @@ import {
   Grid,
   Paper, 
 }from '@material-ui/core';
-const QuestionInfo = ({ slice , image, data}) => {
+const QuestionInfo = ({ slice , image, data, index}) => {
   const handleClick = (event, value) =>{
     console.log(event);
   }
+  console.log(index)
   return (
   <div>
-    <h3 className="title">{RichText.asText(slice.primary[data.id])}</h3>
+    <h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id])}</h5>
     <Grid container spacing={2} >
       <Grid item xs={12}>
         <Grid container justify="center" spacing={2} >
