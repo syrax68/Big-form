@@ -9,16 +9,35 @@
   color: white;
   margin-top: 30px;
 }
-.bloc-item {
-  background-color: #aa69d2;
-  margin: 5px 3px !important;
-  img {
-    transition: transform 0.5s ease;
+.bloc {
+  div:nth-child(1) {
+    background: #aa69d2;
   }
-  &:hover {
-    cursor: pointer;
+  div:nth-child(2) {
+    background: #db6fb3;
+  }
+  div:nth-child(3) {
+    background: #f45979;
+  }
+  div:nth-child(4) {
+    background: #ff6242;
+  }
+  div:nth-child(5) {
+    background: #aa69d2;
+  }
+  div:nth-child(6) {
+    background: #db6fb3;
+  }
+  .bloc-item {
+    margin: 5px 3px !important;
     img {
-      transform: scale(1.1);
+      transition: transform 0.5s ease;
+    }
+    &:hover {
+      cursor: pointer;
+      img {
+        transform: scale(1.1);
+      }
     }
   }
 }

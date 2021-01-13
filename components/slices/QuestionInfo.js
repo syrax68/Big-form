@@ -14,7 +14,7 @@ const QuestionInfo = ({ slice , image, data, index}) => {
     <h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id])}</h5>
     <Grid container spacing={2} >
       <Grid item xs={12}>
-        <Grid container justify="center" spacing={2} >
+        <Grid container justify="center" spacing={2} className="bloc">
           {data.response.map((item, index)=>
             <Grid item xs className="bloc-item" key={index} onClick={()=>handleClick(item)}>
               <p className="response" >{RichText.asText(slice.primary[item])}</p>
