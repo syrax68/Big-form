@@ -1,0 +1,24 @@
+.title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.response {
+  margin: 10px;
+  text-align: center;
+  color: white;
+  margin: 10px;
+}
+.bloc-item {
+  background-color: #aa69d2;
+  margin: 5px 3px !important;
+  img {
+    transition: transform 0.5s ease;
+  }
+  &:hover {
+    cursor: pointer;
+    img {
+      transform: scale(1.1);
+    }
+  }
+}

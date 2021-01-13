@@ -1,31 +1,18 @@
 import React from 'react';
 import {
-  EmailSignup,
-  FullWidthImage,
-  HeadlineWithButton,
-  InfoWithImage,
-  TextInfo,
+  QuestionInfo,
 } from './slices';
+import question from '../pages/api/question';
 
-const SliceZone = ({ sliceZone }) => {
+const SliceZone = ({ sliceZone , image}) => {
+  console.log(question)
   return (
     <div className="container">
-      {sliceZone.map((slice, index) => {
-        switch (slice.slice_type) {
-          case 'text_info':
-            return <TextInfo slice={slice} key={`slice-${index}`} />;
-          case 'info_with_image':
-            return <InfoWithImage slice={slice} key={`slice-${index}`} />;
-          case 'full_width_image':
-            return <FullWidthImage slice={slice} key={`slice-${index}`} />;
-          case 'headline_with_button':
-            return <HeadlineWithButton slice={slice} key={`slice-${index}`} />;
-          case 'email_signup':
-            return <EmailSignup slice={slice} key={`slice-${index}`} />;
-          default:
-            return null;
-        }
-      })}
+      {question.map((item)=>
+        sliceZone.filter(slice => slice.slice_label === item.id).map((filteredSlice, index) => (
+            <QuestionInfo slice={filteredSlice} image={image} data={item} key={`slice-${index}`} />
+        ))
+      )}
     </div>
   );
 };
