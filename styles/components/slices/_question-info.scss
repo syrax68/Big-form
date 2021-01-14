@@ -30,8 +30,10 @@
   }
   .bloc-item {
     margin: 5px 3px !important;
+    overflow: hidden;
     img {
       transition: transform 0.5s ease;
+      margin-top: 20px;
     }
     &:hover {
       cursor: pointer;
