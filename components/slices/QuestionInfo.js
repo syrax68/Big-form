@@ -7,6 +7,9 @@ import {
   TextField
 }from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
+import { SliderRail, Handle, Track, Tick } from "./components";
+
 const QuestionInfo = ({ slice , image, data, index, setState}) => {
   return (
   <div>
@@ -19,13 +22,18 @@ const QuestionInfo = ({ slice , image, data, index, setState}) => {
               case 'organism_name':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
                   <Autocomplete
-                      id="combo-box-demo"
+                      id="organism_name"
                       options={organisme}
                       getOptionLabel={(option) => option.title}
                       onChange={() => setState(item)}
                       style={{ width: '100%' }}
                       renderInput={(params) => <TextField {...params} placeholder="Organisme" variant="outlined" />}
                   />
+                </Grid>  
+              case 'budget':
+                return 
+                <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
+          
                 </Grid>         
               default:
                 return <Grid item xs={12} md lg className="bloc-item" key={index} onClick={() => setState(item)}>
@@ -35,7 +43,7 @@ const QuestionInfo = ({ slice , image, data, index, setState}) => {
                       return <img
                         src={slice.items[Math.floor(Math.random() * slice.items.length)][item].url}
                         alt={item}
-                        key={index}
+                        key={index} 
                         style={{width:"100%"}}
                       />
                     }
