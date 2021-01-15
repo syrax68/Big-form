@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   letter-spacing: 0;
 }
 
@@ -55,6 +55,15 @@ main {
   }
 }
 
+.back {
+  position: absolute;
+  border: none;
+  background: transparent;
+  font-size: 30px;
+}
+.back:hover {
+  cursor: pointer;
+}
 
 @media only screen and (min-width: $min-width-xl) {
   header,

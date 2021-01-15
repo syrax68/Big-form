@@ -8,11 +8,8 @@ import { useState } from 'react';
  * Homepage component
  */
 const Homepage = ({ doc,image, lang, preview }) => {
-  const [next_question, setNextQuestion] = useState('whoiam');
   if (doc && doc.data) {
-
     useUpdatePreviewRef(preview, doc.id)
-    
     return (
       <Layout
         altLangs={doc.alternate_languages}
