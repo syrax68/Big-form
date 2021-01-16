@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Slider, Rail, Handles, Tracks, Ticks } from 'react-compound-slider';
+import { Slider, Rail, Handles, Tracks } from 'react-compound-slider';
 import { withStyles } from '@material-ui/core/styles';
 import ValueViewer from './ValueViewer';
-import { SliderRail, Handle, Track, Tick, MuiClasses } from '../component';
+import { SliderRail, Handle, Track, MuiClasses } from '../component';
 
 const style = () => ({
   root: {
@@ -16,7 +16,7 @@ const style = () => ({
 });
 
 const domain = [100, 500];
-const defaultValues = [150, 300, 400, 450];
+const defaultValues = [150];
 
 interface ExampleProps {
   classes: MuiClasses;
@@ -51,7 +51,7 @@ class Example extends Component<ExampleProps, ExampleState> {
       <div className={classes.root}>
         <ValueViewer values={values} update={update} />
         <Slider
-          mode={1}
+          mode={2}
           step={5}
           domain={domain}
           className={classes.slider}
@@ -65,7 +65,7 @@ class Example extends Component<ExampleProps, ExampleState> {
           <Handles>
             {({ activeHandleID, handles, getHandleProps }) => (
               <div>
-                {handles.map((handle) => (
+                {handles.map(handle => (
                   <Handle
                     key={handle.id}
                     handle={handle}
@@ -77,7 +77,7 @@ class Example extends Component<ExampleProps, ExampleState> {
               </div>
             )}
           </Handles>
-          <Tracks left={false} right={false}>
+          <Tracks right={false}>
             {({ tracks, getTrackProps }) => (
               <div>
                 {tracks.map(({ id, source, target }) => (
@@ -91,15 +91,6 @@ class Example extends Component<ExampleProps, ExampleState> {
               </div>
             )}
           </Tracks>
-          <Ticks count={5}>
-            {({ ticks }) => (
-              <div>
-                {ticks.map((tick) => (
-                  <Tick key={tick.id} tick={tick} count={ticks.length} />
-                ))}
-              </div>
-            )}
-          </Ticks>
         </Slider>
       </div>
     );

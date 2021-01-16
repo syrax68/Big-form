@@ -11,17 +11,19 @@ const SliceZone = ({ sliceZone , image}) => {
   const [answer, setNextAnswer] = useState([]);
   const [lastAnswer, setLastAnswer] = useState([]);
  
+  const handleBack = () => {
+    lastAnswer.pop();
+    setNextAnswer([...lastAnswer]);  
+  };
+  
   useEffect(() => {
+    console.log(answer)
     if(answer && answer[0] != "only_me" && answer[0] != "me_and_some_others" && answer[0] != "others_but_not_me"){
       answer.pop();
     }
   }, [answer, lastAnswer]);
 
-  const handleBack = () => {
-    lastAnswer.pop();
-    setNextAnswer(lastAnswer);  
-    console.log(lastAnswer)
-  };
+ 
 
   return (
     <div className="container">

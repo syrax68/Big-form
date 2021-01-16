@@ -7,8 +7,7 @@ import {
   TextField
 }from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
-import { SliderRail, Handle, Track, Tick } from "./components";
+import {Example2} from './Example2';
 
 const QuestionInfo = ({ slice , image, data, index, setState}) => {
   return (
@@ -29,12 +28,12 @@ const QuestionInfo = ({ slice , image, data, index, setState}) => {
                       style={{ width: '100%' }}
                       renderInput={(params) => <TextField {...params} placeholder="Organisme" variant="outlined" />}
                   />
-                </Grid>  
+                </Grid>
+
               case 'budget':
-                return 
-                <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
-          
-                </Grid>         
+                return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
+                  <Example2 />
+                </Grid>
               default:
                 return <Grid item xs={12} md lg className="bloc-item" key={index} onClick={() => setState(item)}>
                   <p className="response" >{RichText.asText(slice.primary[item])}</p>
