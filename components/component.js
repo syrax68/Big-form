@@ -135,6 +135,7 @@ export function Tick({ tick, count, format }) {
       <div
         style={{
           position: "absolute",
+          background: `transparent !important`,
           marginTop: 22,
           fontSize: 10,
           color: `#fff`,
@@ -143,7 +144,6 @@ export function Tick({ tick, count, format }) {
           marginLeft: `${-(100 / count) / 2}%`,
           width: `${100 / count}%`,
           left: `${tick.percent}%`,
-          backgroundColor: `transparent !important`
         }}
       >
         {format(tick.value)}
