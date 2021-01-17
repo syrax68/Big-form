@@ -7,7 +7,7 @@ import {
   TextField
 }from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import {Example2} from './Example2';
+import Compound from './Compound';
 
 const QuestionInfo = ({ slice , image, data, index, setState}) => {
   return (
@@ -32,11 +32,11 @@ const QuestionInfo = ({ slice , image, data, index, setState}) => {
 
               case 'budget':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
-                  <Example2 />
+                  <Compound />
                 </Grid>
               case 'attendees_number':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
-                  <Example2 />
+                  <Compound/>
                 </Grid>
               default:
                 return <Grid item xs={12} md lg className="bloc-item" key={index} onClick={() => setState(item)}>

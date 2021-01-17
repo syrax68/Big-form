@@ -12,6 +12,9 @@
   align-items: center;
   text-align: center;
   color: white;
+  @media (max-width: '500px') {
+    height: auto;
+  }
 }
 .bloc {
   div:nth-child(1) {
@@ -51,4 +54,7 @@
       }
     }
   }
+}
+.HandleComponent-outer-14 {
+  background: none !important;
 }
