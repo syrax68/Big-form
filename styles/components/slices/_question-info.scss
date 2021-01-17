@@ -39,6 +39,10 @@
     img {
       transition: transform 0.5s ease;
       margin-top: 15px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      width: 100%;
     }
     &:hover {
       cursor: pointer;

@@ -4,6 +4,7 @@ import {
 } from './slices';
 import question from '../pages/api/question';
 import nextQuestion from '../pages/api/nextQuestion';
+import firstQuestion from '../pages/api/firstQuestion';
 import next from 'next';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
@@ -66,7 +67,7 @@ const SliceZone = ({ sliceZone , image}) => {
             )
           :null
         )
-      :question.map((item, key)=> 
+      :firstQuestion.map((item, key)=> 
         sliceZone.filter(slice => slice.slice_label === item.id).map((filteredSlice, index) => (
             <QuestionInfo slice={filteredSlice} image={image} data={item} key={index} index={key} setState={state => {setNextAnswer([...answer,state]); setLastAnswer([...lastAnswer,state])}}/>
         ))

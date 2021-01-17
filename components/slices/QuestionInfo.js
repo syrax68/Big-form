@@ -34,6 +34,10 @@ const QuestionInfo = ({ slice , image, data, index, setState}) => {
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
                   <Example2 />
                 </Grid>
+              case 'attendees_number':
+                return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
+                  <Example2 />
+                </Grid>
               default:
                 return <Grid item xs={12} md lg className="bloc-item" key={index} onClick={() => setState(item)}>
                   <p className="response" >{RichText.asText(slice.primary[item])}</p>
@@ -43,7 +47,6 @@ const QuestionInfo = ({ slice , image, data, index, setState}) => {
                         src={slice.items[Math.floor(Math.random() * slice.items.length)][item].url}
                         alt={item}
                         key={index} 
-                        style={{width:"100%"}}
                       />
                     }
                   })}
