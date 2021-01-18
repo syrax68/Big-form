@@ -135,7 +135,7 @@ export function Tick({ tick, count, format }) {
       <div
         style={{
           position: "absolute",
-          background: `transparent !important`,
+          background: "transparent",
           marginTop: 22,
           fontSize: 10,
           color: `#fff`,
