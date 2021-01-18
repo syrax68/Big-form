@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {
   QuestionInfo,
 } from './slices';
+import {
+  Grid,
+}from '@material-ui/core';
 import question from '../pages/api/question';
 import nextQuestion from '../pages/api/nextQuestion';
 import firstQuestion from '../pages/api/firstQuestion';
@@ -18,18 +21,20 @@ const SliceZone = ({ sliceZone , image}) => {
   };
   
   useEffect(() => {
-    console.log(answer)
     if(answer && answer[0] != "only_me" && answer[0] != "me_and_some_others" && answer[0] != "others_but_not_me"){
       answer.pop();
     }
   }, [answer, lastAnswer]);
 
- 
 
   return (
     <div className="container">
       <button type="button" hidden={answer.length === 0} className="back" aria-label="Previous" onClick={handleBack}><ArrowBackIcon style={{color:'black'}}/></button>
-      {answer.length > 1?
+      {answer[answer.length-1] == "duration"?
+        <Grid item xs={12} md={12} lg={12} className="bloc-item">
+          <p style={{color:"red",textAlign:"center", fontWeight:"600"}}>Félicitations, vous pouvez désormais envoyer votre devis !</p>
+        </Grid>
+        :answer.length > 1?
         nextQuestion.map((item, key)=>
         (
           item.response === answer[answer.length-1]?

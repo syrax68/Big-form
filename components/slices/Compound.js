@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
 import { Handle, Track, Tick } from "../component"; // example render components - source below
 
@@ -18,21 +18,17 @@ const railStyle = {
 
 
 
-const Compound = () => {
+const Compound = ({setState, value}) => {
     const [domain, setDomaine] = useState([1, 50]);
-    const [defaultValues, setDefaultValue] = useState([1]);
-    const handleChange=(event)=>{
-      console.log(event)
-    }
     return (
       <div style={{ height: 50, marginLeft: `50px`, marginRight: `50px`,marginTop: `50px`, background: `transparent`}}>
         <Slider
           mode={2}
           step={1}
           domain={domain}
+          onChange={(e) => setState(e)}
           rootStyle={sliderStyle}
-          onChange={handleChange}
-          values={defaultValues}
+          values={[Number(value)]}
         >
           <Rail>
             {({ getRailProps }) => (

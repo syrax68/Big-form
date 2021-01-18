@@ -61,5 +61,5 @@ export default [
     {"response":"some_days", "id":"what_exact_duration_1"},
     {"response":"some_weeks", "id":"what_exact_duration_1"},
     {"response":"some_months", "id":"what_exact_duration_1"},
-   // {"response":"duration", "id":"end"},
+    {"response":"duration", "id":"end"},
 ]

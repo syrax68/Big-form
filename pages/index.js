@@ -39,7 +39,6 @@ export async function getStaticProps({
     {};
 
   const { currentLang, isMyMainLanguage} = manageLocal(locales, locale)
-  console.log(image)
   return {
     props: {
       doc,

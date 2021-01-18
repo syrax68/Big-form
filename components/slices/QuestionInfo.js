@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react';
+import React , {useState,useEffect} from 'react';
 import { RichText } from 'prismic-reactjs';
 import organisme from '../../pages/api/organisme';
 import relation_type from '../../pages/api/relationType';
@@ -12,6 +12,21 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import Compound from './Compound';
 
 const QuestionInfo = ({ slice , image, data, index, setState}) => {
+
+  const [budget,setBudget] = useState([10]);
+  const [number,setNumber] = useState([10]);
+  const [duration, setDuration] = useState([10]);
+  const [date, setDate] = useState([10]);
+  useEffect(() => {
+    if (process.browser) {
+      setBudget(localStorage.getItem("budget"));
+      setNumber(localStorage.getItem("number"));
+      setDuration(localStorage.getItem("duration"));
+      setDate(localStorage.getItem("date"));
+    }
+  }, [])
+ 
+  
   return (
   <div>
     <h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id])}</h5>
@@ -19,7 +34,6 @@ const QuestionInfo = ({ slice , image, data, index, setState}) => {
       <Grid item xs={12}>
         <Grid container justify="center" className="bloc">
           {data.response.map((item, index)=>{
-            {console.log(item)}
             switch (item) {
               case 'organism_name':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
@@ -57,22 +71,22 @@ const QuestionInfo = ({ slice , image, data, index, setState}) => {
 
               case 'budget':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
-                  <Compound />
+                  <Compound value={budget} setState={state => {process.browser?localStorage.setItem("budget",state):null,setState(item)}}/>
                 </Grid>
               case 'attendees_number':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
-                  <Compound/>
+                  <Compound value={number} setState={state => {process.browser?localStorage.setItem("number",state):null,setState(item)}}/>
                 </Grid>
               case 'desired_date':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
-                  <Compound/>
+                  <Compound value={date} setState={state => {process.browser?localStorage.setItem("date",state):null,setState(item)}}/>
                 </Grid>
               case 'duration':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
-                  <Compound/>
+                  <Compound value={duration} setState={state => {process.browser?localStorage.setItem("duration",state):null,setState(item)}}/>
                 </Grid>
               default:
-                return <Grid item xs={12} md lg={data.response.length>3?5:true}  className="bloc-item" key={index} onClick={() => setState(item)}>
+                return <Grid item xs={12} md={data.response.length>4?5:true} lg={data.response.length>4?5:true}  className="bloc-item" key={index} onClick={() => setState(item)}>
                   <p className="response" >{RichText.asText(slice.primary[item])}</p>
                   {image.map((slice , index)=>{
                     if(slice.slice_label == item){
