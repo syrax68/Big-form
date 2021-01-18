@@ -17,8 +17,6 @@ export default [
     {"response":"organism_name", "id":"how_many_attendees"},
     {"response":"i_dont_know_organism_name", "id":"how_many_attendees"},
     {"response":"budget", "id":"how_many_attendees"},
-    {"response":"organism_name", "id":"how_many_attendees"},
-    {"response":"i_dont_know_organism_name", "id":"how_many_attendees"},
     {"response":"attendees_number", "id":"what_relation_type_with_attendees_1"},
     {"response":"i_dont_know_how_many_attendees", "id":"what_relation_type_with_attendees_1"},
     {"response":"professional_relation_type", "id":"what_relation_position_with_attendees_1"},

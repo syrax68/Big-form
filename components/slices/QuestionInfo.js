@@ -19,6 +19,7 @@ const QuestionInfo = ({ slice , image, data, index, setState}) => {
       <Grid item xs={12}>
         <Grid container justify="center" className="bloc">
           {data.response.map((item, index)=>{
+            {console.log(item)}
             switch (item) {
               case 'organism_name':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
