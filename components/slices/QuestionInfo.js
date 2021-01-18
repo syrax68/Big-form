@@ -71,19 +71,19 @@ const QuestionInfo = ({ slice , image, data, index, setState}) => {
 
               case 'budget':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
-                  <Compound value={budget} setState={state => {process.browser?localStorage.setItem("budget",state):null,setState(item)}}/>
+                  <Compound value={budget} text={RichText.asText(slice.primary[item])} setState={state => {process.browser?localStorage.setItem("budget",state):null,setState(item)}}/>
                 </Grid>
               case 'attendees_number':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
-                  <Compound value={number} setState={state => {process.browser?localStorage.setItem("number",state):null,setState(item)}}/>
+                  <Compound value={number} text={RichText.asText(slice.primary[item])} setState={state => {process.browser?localStorage.setItem("number",state):null,setState(item)}}/>
                 </Grid>
               case 'desired_date':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
-                  <Compound value={date} setState={state => {process.browser?localStorage.setItem("date",state):null,setState(item)}}/>
+                  <Compound value={date} text={RichText.asText(slice.primary[item])} setState={state => {process.browser?localStorage.setItem("date",state):null,setState(item)}}/>
                 </Grid>
               case 'duration':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
-                  <Compound value={duration} setState={state => {process.browser?localStorage.setItem("duration",state):null,setState(item)}}/>
+                  <Compound value={duration} text={RichText.asText(slice.primary[item])} setState={state => {process.browser?localStorage.setItem("duration",state):null,setState(item)}}/>
                 </Grid>
               default:
                 return <Grid item xs={12} md={data.response.length>4?5:true} lg={data.response.length>4?5:true}  className="bloc-item" key={index} onClick={() => setState(item)}>

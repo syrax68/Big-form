@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
-import { Handle, Track, Tick } from "../component"; // example render components - source below
+import Handle,{ Track, Tick } from "../component"; // example render components - source below
 
 const sliderStyle = {
   position: "relative",
@@ -18,7 +18,7 @@ const railStyle = {
 
 
 
-const Compound = ({setState, value}) => {
+const Compound = ({setState, value, text}) => {
     const [domain, setDomaine] = useState([1, 50]);
     return (
       <div style={{ height: 50, marginLeft: `50px`, marginRight: `50px`,marginTop: `50px`, background: `transparent`}}>
@@ -40,6 +40,7 @@ const Compound = ({setState, value}) => {
               <div className="slider-handles">
                 {handles.map(handle => (
                   <Handle
+                    text={text}
                     key={handle.id}
                     handle={handle}
                     domain={domain}

@@ -1,47 +1,42 @@
 // @flow weak
 
-import React, { Component } from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 
 // *******************************************************
 // HANDLE COMPONENT
 // *******************************************************
-export class Handle extends Component {
-  state = {
-    showTooltip: false
-  };
-
-  render() {
-    const {
-      domain: [min, max],
-      handle: { id, value, percent },
-      getHandleProps
-    } = this.props;
-    const { showTooltip } = this.state;
+const Handle = ({domain, handle, getHandleProps, text}) => {
+  const [showTooltip, setShowToolTip] = useState(false);
+  // const {
+  //   domain: [min, max],
+  //   handle: { id, value, percent },
+  //   getHandleProps
+  // } = this.props;
 
     return (
       <React.Fragment>
         {showTooltip ? (
           <div
             style={{
-              left: `${percent}%`,
+              left: `${handle.percent}%`,
               position: "absolute",
               marginLeft: "-11px",
               marginTop: "-30px"
             }}
           >
             <div className="tooltip">
-              <span className="tooltiptext">Valeur: {value}</span>
+              <span className="tooltiptext">{handle.value} {text}</span>
             </div>
           </div>
         ) : null}
         <div
           role="slider"
-          aria-valuemin={min}
-          aria-valuemax={max}
-          aria-valuenow={value}
+          aria-valuemin={domain.min}
+          aria-valuemax={domain.max}
+          aria-valuenow={handle.value}
           style={{
-            left: `${percent}%`,
+            left: `${handle.percent}%`,
             position: "absolute",
             marginLeft: "-11px",
             marginTop: "-9px",
@@ -53,22 +48,17 @@ export class Handle extends Component {
             boxShadow: "1px 1px 1px 1px rgba(0, 0, 0, 0.4)",
             backgroundColor: "darkgray"
           }}
-          {...getHandleProps(id, {
+          {...getHandleProps(handle.id, {
             onMouseLeave: () => {
-              this.setState({
-                showTooltip: false
-              });
+              setShowToolTip(false)
             },
             onMouseOver: () => {
-              this.setState({
-                showTooltip: true
-              });
+              setShowToolTip(true)
             }
           })}
         />
       </React.Fragment>
-    );
-  }
+    )
 }
 
 Handle.propTypes = {
@@ -80,6 +70,8 @@ Handle.propTypes = {
   }).isRequired,
   getHandleProps: PropTypes.func.isRequired
 };
+
+export default Handle;
 
 // *******************************************************
 // TRACK COMPONENT
