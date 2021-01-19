@@ -18,7 +18,7 @@
 }
 .bloc {
   div:nth-child(1) {
-    background: #aa69d2;
+    background: #14c7b4;
   }
   div:nth-child(2) {
     background: #db6fb3;
@@ -57,4 +57,10 @@
 }
 .HandleComponent-outer-14 {
   background: none !important;
+}
+.MuiAutocomplete-endAdornment {
+  background: #14c7b4 !important;
+}
+input {
+  color: #fff !important;
 }
