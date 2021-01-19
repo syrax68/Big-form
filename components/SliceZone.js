@@ -25,11 +25,15 @@ const SliceZone = ({ sliceZone , image}) => {
       answer.pop();
     }
   }, [answer, lastAnswer]);
-
+  // if(answer[answer.length-1] == "duration"){
+  //   if(process.browser){
+  //     localStorage.clear();
+  //   }
+  // }
 
   return (
     <div className="container">
-      <button type="button" hidden={answer.length === 0} className="back" aria-label="Previous" onClick={handleBack}><ArrowBackIcon style={{color:'black'}}/></button>
+      <button type="button" hidden={answer.length === 0 || answer[answer.length-1] == "duration"} className="back" aria-label="Previous" onClick={handleBack}><ArrowBackIcon style={{color:'black'}}/></button>
       {answer[answer.length-1] == "duration"?
         <Grid item xs={12} md={12} lg={12} className="bloc-item">
           <p style={{color:"red",textAlign:"center", fontWeight:"600"}}>Félicitations, vous pouvez désormais envoyer votre devis !</p>
@@ -39,9 +43,9 @@ const SliceZone = ({ sliceZone , image}) => {
         (
           item.response === answer[answer.length-1]?
             question.map((itemquestion, key)=>
-              itemquestion.id === item.id?
+              itemquestion.id === item.id?   
                 sliceZone.filter(slice => slice.slice_label === item.id).map((filteredSlice, index) => (
-                    <QuestionInfo slice={filteredSlice} image={image} data={itemquestion} key={index} index={key} setState={state => {setNextAnswer([...answer,state]); setLastAnswer([...lastAnswer,state])}}/>
+                    <QuestionInfo slice={filteredSlice} answer={answer} image={image} data={itemquestion} key={index} index={key} setState={state => {setNextAnswer([...answer,state]); setLastAnswer([...lastAnswer,state])}}/>
                 ))
               :null
             )
