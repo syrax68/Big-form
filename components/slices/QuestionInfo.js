@@ -26,12 +26,8 @@ const QuestionInfo = ({ slice , image, data, answer, index, setState}) => {
       setDate(localStorage.getItem("date"));
     }
     
-    {data.condition?data.condition.map((condition)=>{
-      setValidation(answer.includes(condition));
-    }):null}
-    
   }, [answer])
-  console.log(slice.primary)
+
 
   return (
   <div>
