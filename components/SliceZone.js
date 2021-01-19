@@ -23,13 +23,15 @@ const SliceZone = ({ sliceZone , image}) => {
   useEffect(() => {
     if(answer && answer[0] != "only_me" && answer[0] != "me_and_some_others" && answer[0] != "others_but_not_me"){
       answer.pop();
+      lastAnswer.pop();
     }
-  }, [answer, lastAnswer]);
-  // if(answer[answer.length-1] == "duration"){
-  //   if(process.browser){
-  //     localStorage.clear();
-  //   }
-  // }
+    // if(answer[answer.length-1] == "duration"){
+    //   if(process.browser){
+    //     localStorage.clear();
+    //   }
+    // }
+  }, [answer]);
+  console.log(answer)
 
   return (
     <div className="container">

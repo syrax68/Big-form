@@ -17,7 +17,6 @@ const QuestionInfo = ({ slice , image, data, answer, index, setState}) => {
   const [attendee,setAttendee] = useState([1]);
   const [duration, setDuration] = useState([1]);
   const [date, setDate] = useState([1]);
-  const [validationCondition, setValidation] = useState(false);
   useEffect(() => {
     if (process.browser) {
       setBudget(localStorage.getItem("budget"));
@@ -54,50 +53,59 @@ const QuestionInfo = ({ slice , image, data, answer, index, setState}) => {
                       id="organism_name"
                       options={organisme}
                       getOptionLabel={(option) => option.title}
-                      onChange={() => setState(item)}
+                      onChange={(event, value) => {process.browser?(localStorage.setItem("organism_name",JSON.stringify(value))):null,setState(item)}}
                       style={{ width: '100%' }}
+                      defaultValue={process.browser?(JSON.parse(localStorage.getItem("organism_name"))):null}
                       renderInput={(params) => <TextField {...params} placeholder="Organisme" variant="outlined" />}
                   />
                 </Grid>
+                break;
               case 'relation_position':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
                   <Autocomplete
-                      id="relation_postition"
+                      id="relation_position"
                       options={relation_position}
                       getOptionLabel={(option) => option.title}
-                      onChange={() => setState(item)}
+                      onChange={(event,value) => {process.browser?(localStorage.setItem("relation_position",JSON.stringify(value))):null,setState(item)}}
                       style={{ width: '100%' }}
+                      defaultValue={process.browser?(JSON.parse(localStorage.getItem("relation_position"))):null}
                       renderInput={(params) => <TextField {...params} placeholder="Position" variant="outlined" />}
                   />
                 </Grid>
+                break;
               case 'relation_type':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
                   <Autocomplete
                       id="relation_type"
                       options={relation_type}
                       getOptionLabel={(option) => option.title}
-                      onChange={() => setState(item)}
+                      onChange={(event,value) => {process.browser?(localStorage.setItem("relation_type",JSON.stringify(value))):null,setState(item)}}
                       style={{ width: '100%' }}
+                      defaultValue={process.browser?(JSON.parse(localStorage.getItem("relation_type"))):null}
                       renderInput={(params) => <TextField {...params} placeholder="Niveau de relation" variant="outlined" />}
                   />
                 </Grid>
-
+                break;
               case 'budget':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
                   <Compound value={budget} text={RichText.asText(slice.primary[item])} setState={state => {process.browser?(localStorage.setItem("budget",state), setState(item)):null}}/>
                 </Grid>
+                break;
               case 'attendees_number':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
                   <Compound value={attendee} text={RichText.asText(slice.primary[item])} setState={state => {process.browser?(localStorage.setItem("attendee",state), setState(item)):null}}/>
                 </Grid>
+                break;
               case 'desired_date':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
                   <Compound value={date} text={RichText.asText(slice.primary[item])} setState={state => {process.browser?(localStorage.setItem("date",state), setState(item)):null}}/>
                 </Grid>
+                break;
               case 'duration':
                 return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
                   <Compound value={duration} text={RichText.asText(slice.primary[item])} setState={state => {process.browser?(localStorage.setItem("duration",state), setState(item)):null}}/>
                 </Grid>
+                break;
               default:
                 return <Grid item xs={12} md={data.response.length>4?5:true} lg={data.response.length>4?5:true}  className="bloc-item" key={index} onClick={() => setState(item)}>
                   <p className="response" >{RichText.asText(slice.primary[item])}</p>

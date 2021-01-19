@@ -26,7 +26,7 @@ const Compound = ({setState, value, text}) => {
           mode={2}
           step={1}
           domain={domain}
-          onChange={(e) => setState(e)}
+          onChange={(event) => setState(event)}
           rootStyle={sliderStyle}
           values={[Number(value)]}
         >
