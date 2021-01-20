@@ -25,13 +25,7 @@ const SliceZone = ({ sliceZone , image}) => {
       answer.pop();
       lastAnswer.pop();
     }
-    // if(answer[answer.length-1] == "duration"){
-    //   if(process.browser){
-    //     localStorage.clear();
-    //   }
-    // }
   }, [answer]);
-  console.log(answer)
 
   return (
     <div className="container">

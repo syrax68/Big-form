@@ -18,17 +18,28 @@ const railStyle = {
 
 
 
-const Compound = ({setState, value, text}) => {
+const Compound = ({setState, defaultValue, text}) => {
     const [domain, setDomaine] = useState([1, 50]);
+    const handleChange=(event,value)=>{
+      setState(event);
+    }
+    // useEffect(() => {
+    //   let isMounted = true;
+      
+    //   // if(isMounted && value){
+    //   //   setDefaultValue(value);
+    //   // }
+    //   // return () => { isMounted = false };
+    // }, [])
     return (
       <div style={{ height: 50, marginLeft: `50px`, marginRight: `50px`,marginTop: `50px`, background: `transparent`}}>
         <Slider
           mode={2}
           step={1}
           domain={domain}
-          onChange={(event) => setState(event)}
+          onChange={(event,value)=>handleChange(event,value)}
           rootStyle={sliderStyle}
-          values={[Number(value)]}
+          values={defaultValue}
         >
           <Rail>
             {({ getRailProps }) => (
