@@ -54,19 +54,18 @@ const QuestionInfo = ({ slice , image, data, answer, index, setState}) => {
       setState(item);
     }
   }
-
   return (
   <div>
     {answer && answer[(answer.length)-1] == "some_hours" && data.id2?<h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id2])}</h5>
       :answer && answer[(answer.length)-1] == "some_days" && data.id3?<h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id3])}</h5>
       :answer && answer[(answer.length)-1] == "some_weeks" && data.id4?<h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id4])}</h5>
       :answer && answer[(answer.length)-1] == "some_months" && data.id5?<h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id5])}</h5>
-      :attendee == 2 && data.id3?<h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id2])}</h5>
-      :attendee > 2 && data.id3?<h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id3])}</h5>
       :answer && answer[0]== "others_but_not_me" && data.id2 ?<h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id2])}</h5>
       :answer && answer[0]== "others_but_not_me" && attendee == 1 && data.id2 ?<h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id2])}</h5>
-      :answer && answer[0]== "others_but_not_me" && attendee == 2 && data.id3 ?<h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id3])}</h5>
+      :answer && answer[0]== "others_but_not_me" && attendee >= 2 && data.id3 ?<h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id3])}</h5>
       :answer && answer[0]== "me_and_some_others" && data.id4 ?<h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id4])}</h5>
+      :answer && answer[0]== "only_me" && attendee == 2 && data.id2?<h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id2])}</h5>
+      :answer && answer[0]== "only_me" && attendee > 2 && data.id3?<h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id3])}</h5>
       :<h5 className="title"><span>{index+1}-</span>{RichText.asText(slice.primary[data.id])}</h5>
     }
     <Grid container spacing={2} >
@@ -128,7 +127,10 @@ const QuestionInfo = ({ slice , image, data, answer, index, setState}) => {
                 </Grid>
               default:
                 return <Grid item xs={12} md={data.response.length>4?5:true} lg={data.response.length>4?5:true}  className="bloc-item" key={index} onClick={() => setState(item)}>
-                  <p className="response" >{RichText.asText(slice.primary[item])}</p>
+                  {answer && answer[0]== "others_but_not_me" && slice.primary[item+"_2"]?<p className="response" >{RichText.asText(slice.primary[item+"_2"])}</p>
+                  :answer && answer[0]== "me_and_some_others" && slice.primary[item+"_3"]?<p className="response" >{RichText.asText(slice.primary[item+"_3"])}</p>
+                  :<p className="response" >{RichText.asText(slice.primary[item])}</p>
+                  }
                   {image.map((slice , index)=>{
                     if(slice.slice_label == item){
                       return <img

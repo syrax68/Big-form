@@ -19,7 +19,7 @@ const railStyle = {
 
 
 const Compound = ({setState, defaultValue, text}) => {
-    const [domain, setDomaine] = useState([1, 50]);
+    const [domain, setDomaine] = useState([1, 100]);
     const handleChange=(event,value)=>{
       setState(event);
     }
