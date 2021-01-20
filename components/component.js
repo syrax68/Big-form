@@ -138,7 +138,7 @@ export function Tick({ tick, count, format }) {
           left: `${tick.percent}%`,
         }}
       >
-        {format(tick.value)}
+        {format(tick.value) == 100? "plus":null} {format(tick.value)}
       </div>
     </div>
   );
