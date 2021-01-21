@@ -2,10 +2,8 @@ import React from 'react';
 import Head from 'next/head';
 import { prismicRepoName } from 'utils/prismicHelpers';
 import Header from './Header';
-import ExitPreviewButton from './ExitPreviewButton'
 
 const Layout = ({
-  isPreview,
   children,
   altLangs,
   lang,
@@ -28,7 +26,6 @@ const Layout = ({
       menu={menu}
     />
     <main>{children}</main>
-    {isPreview ? <ExitPreviewButton /> : null}
   </>
 );
 
