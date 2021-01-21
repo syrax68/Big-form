@@ -24,7 +24,7 @@ const Compound = ({setState, defaultValue, text}) => {
       setState(event);
     }
     return (
-      <div style={{ height: 50, marginLeft: `50px`, marginRight: `50px`,marginTop: `50px`, background: `transparent`}}>
+      <div className="bloc-slider">
         <Slider
           mode={2}
           step={1}
