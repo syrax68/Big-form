@@ -75,7 +75,7 @@ const QuestionInfo = ({ slice , image, data, answer, setState}) => {
           {data.response.map((item, index)=>{
             switch (item) {
               case 'organism_name':
-                return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
+                return <Grid item xs={12} md={12} lg={12} className="bloc-item" style={{display: "contents"}} key={index} >
                   <Autocomplete
                       id="organism_name"
                       options={organisme}
@@ -87,7 +87,7 @@ const QuestionInfo = ({ slice , image, data, answer, setState}) => {
                   />
                 </Grid>
               case 'relation_position':
-                return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
+                return <Grid item xs={12} md={12} lg={12} className="bloc-item" style={{display: "contents"}} key={index} >
                   <Autocomplete
                       id="relation_position"
                       options={relation_position}
@@ -99,7 +99,7 @@ const QuestionInfo = ({ slice , image, data, answer, setState}) => {
                   />
                 </Grid>
               case 'relation_type':
-                return <Grid item xs={12} md={12} lg={12} className="bloc-item" key={index} >
+                return <Grid item xs={12} md={12} lg={12} className="bloc-item" style={{display: "contents"}} key={index} >
                   <Autocomplete
                       id="relation_type"
                       options={relation_type}

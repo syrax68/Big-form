@@ -10,7 +10,7 @@ export default [
     {"id":"what_amount_will_you_pay_1","id2":"what_amount_will_you_pay_2", "response":["budget"],"condition":["others_but_not_me"]},
     {"id":"what_cpf_amount_will_you_pay_1","id2":"what_cpf_amount_will_you_pay_2", "response":["budget"],"condition":["others_but_not_me"]},
     {"id":"what_organism_pay2_1","id2":"what_organism_pay2_2", "response":["organism_name","i_dont_know_organism_name"],"condition":["others_but_not_me"]},
-    {"id":"how_many_attendees", "response":["i_dont_know_how_many_attendees","attendees_number"]},
+    {"id":"how_many_attendees", "response":["attendees_number","i_dont_know_how_many_attendees"]},
     {"id":"what_relation_type_with_attendees_1","id2":"what_relation_type_with_attendees_2", "id3":"what_relation_type_with_attendees_3","response":["professional_relation_type","personal_relation_type"]},
     {"id":"what_relation_position_with_attendees_1","id2":"what_relation_position_with_attendees_2","id3":"what_relation_position_with_attendees_3", "response":["relation_position"]},
     {"id":"what_relation_level_with_attendees_1","id2":"what_relation_level_with_attendees_2","id3":"what_relation_level_with_attendees_3", "response":["relation_type"]},
