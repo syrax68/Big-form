@@ -63,6 +63,13 @@
   align-items: center;
   border-radius: 10px;
 }
+.datePicker {
+  width: 100%;
+  margin: 20px !important;
+  & input:hover {
+    cursor: pointer;
+  }
+}
 .bloc-slider {
   height: 50px;
   display: flex;

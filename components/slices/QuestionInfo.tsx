@@ -11,11 +11,24 @@ import {
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Compound from './Compound';
 
+const formatDate =(date)=> {
+  let d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+
+  return [year, month, day].join('-');
+}
 const QuestionInfo = ({ slice , image, data, answer, setState}) => {
   const [budget,setBudget] = useState([1]);
   const [attendee,setAttendee] = useState([1]);
   const [duration, setDuration] = useState([1]);
-  const [date, setDate] = useState([1]);
+  const [date, setDate] = useState<String | null>(formatDate(new Date()));;
 
   useEffect(() => {
     if ((process as any).browser) {
@@ -28,9 +41,6 @@ const QuestionInfo = ({ slice , image, data, answer, setState}) => {
       }  
       if(localStorage.getItem("duration")){
         setDuration([Number(localStorage.getItem("duration"))]);
-      }
-      if(localStorage.getItem("date")){
-        setDate([Number(localStorage.getItem("date"))]);
       }
     }
   }, [])
@@ -48,7 +58,7 @@ const QuestionInfo = ({ slice , image, data, answer, setState}) => {
       setState(item);
     }
   }
-  
+  console.log(date)
   const handleChangeOrganism = (item ,value) =>{
     if((process as any).browser){
       localStorage.setItem("organism_name",JSON.stringify(value));
@@ -126,7 +136,17 @@ const QuestionInfo = ({ slice , image, data, answer, setState}) => {
                 </Grid>
               case 'desired_date':
                 return <Grid container className="bloc-item flex-bloc" key={index} >
-                  <Compound defaultValue={date} text={RichText.asText(slice.primary[item])} setState={state => {(process as any).browser?(localStorage.setItem("date",state)):null}}/>
+                  <TextField
+                    id="date"
+                    type="date"
+                    className="datePicker"
+                    defaultValue={date}
+                    onChange={event => setDate(event.target.value)}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                  {/* <Compound defaultValue={date} text={RichText.asText(slice.primary[item])} setState={state => {(process as any).browser?(localStorage.setItem("date",state)):null}}/> */}
                   <Button variant="contained" color="primary" style={{height:"40px", right: "10px", backgroundColor:"#0e5a73"}} onClick={()=>setState(item)}>
                     Valider
                   </Button>
