@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  QuestionInfo,
-} from './slices';
+import QuestionInfo from './slices/QuestionInfo.tsx';
 import {
   Grid,
 }from '@material-ui/core';
@@ -26,7 +24,6 @@ const SliceZone = ({ sliceZone , image}) => {
       lastAnswer.pop();
     }
   }, [answer]);
-
   return (
     <div className="container">
       <button type="button" hidden={answer.length === 0 || answer[answer.length-1] == "duration"} className="back" aria-label="Previous" onClick={handleBack}><ArrowBackIcon style={{color:'black'}}/></button>
@@ -74,7 +71,7 @@ const SliceZone = ({ sliceZone , image}) => {
         )
       :firstQuestion.map((item, key)=> 
         sliceZone.filter(slice => slice.slice_label === item.id).map((filteredSlice, index) => (
-            <QuestionInfo slice={filteredSlice} image={image} data={item} key={index} index={key} setState={state => {setNextAnswer([...answer,state]); setLastAnswer([...lastAnswer,state])}}/>
+            <QuestionInfo slice={filteredSlice} image={image} data={item} key={index} setState={state => {setNextAnswer([...answer,state]); setLastAnswer([...lastAnswer,state])}}/>
         ))
       )}
     </div>

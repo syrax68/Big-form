@@ -23,14 +23,6 @@ const Compound = ({setState, defaultValue, text}) => {
     const handleChange=(event,value)=>{
       setState(event);
     }
-    // useEffect(() => {
-    //   let isMounted = true;
-      
-    //   // if(isMounted && value){
-    //   //   setDefaultValue(value);
-    //   // }
-    //   // return () => { isMounted = false };
-    // }, [])
     return (
       <div style={{ height: 50, marginLeft: `50px`, marginRight: `50px`,marginTop: `50px`, background: `transparent`}}>
         <Slider
