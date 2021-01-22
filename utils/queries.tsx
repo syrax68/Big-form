@@ -1,4 +1,5 @@
-import { Client } from 'utils/prismicHelpers';
+// @ts-ignore
+import { Client } from './prismicHelpers.tsx';
 
 async function fetchDocs(page = 1, routes = []) {
   const response = await Client().query('', { pageSize: 100, lang: '*', page });

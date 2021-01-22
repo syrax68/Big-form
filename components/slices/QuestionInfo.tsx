@@ -1,15 +1,19 @@
 import React , { useState, useEffect} from 'react';
 import { RichText } from "prismic-reactjs";
-import organisme from '../../pages/api/organisme';
-import relation_type from '../../pages/api/relationType';
-import relation_position from '../../pages/api/relationPosition';
+// @ts-ignore
+import organisme from "../../pages/api/organisme.ts";
+// @ts-ignore
+import relation_type from '../../pages/api/relationType.ts';
+// @ts-ignore
+import relation_position from '../../pages/api/relationPosition.ts';
 import {
   Button,
   Grid,
   TextField
 }from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import Compound from './Compound';
+// @ts-ignore
+import Compound from './Compound.tsx';
 
 const formatDate =(date)=> {
   let d = new Date(date),

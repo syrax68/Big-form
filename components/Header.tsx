@@ -1,8 +1,9 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Navigation, LanguageSwitcher } from '.';
+// @ts-ignore
+import { LanguageSwitcher } from './index.tsx';
 
-const Header = ({ menu, altLangs }) => (
+const Header = ({ altLangs }) => (
   <>
     <header>
       <div className="menu">

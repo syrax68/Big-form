@@ -4,7 +4,7 @@ import {
   apiEndpoint,
   accessToken,
   hrefResolver,
-} from 'prismic-configuration';
+} from '../prismic-configuration';
 
 // Helper function to get the Prismic repository name from the URL
 export const [, prismicRepoName] = apiEndpoint.match(/https?:\/\/([^.]+)?\.(cdn\.)?.+/);

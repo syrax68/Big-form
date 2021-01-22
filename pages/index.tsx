@@ -1,8 +1,10 @@
 import React from 'react';
-import { Client, manageLocal } from 'utils/prismicHelpers';
-import useUpdatePreviewRef from 'utils/hooks/useUpdatePreviewRef';
-import { Layout, SliceZone  } from 'components';
-import { useState } from 'react';
+// @ts-ignore
+import { Client, manageLocal } from '../utils/prismicHelpers.tsx';
+import useUpdatePreviewRef from '../utils/hooks/useUpdatePreviewRef';
+import  Layout  from '../components/Layout';
+// @ts-ignore
+import SliceZone from '../components/SliceZone.tsx';
 
 /**
  * Homepage component
@@ -14,7 +16,7 @@ const Homepage = ({ doc,image, lang, preview }) => {
       <Layout
         altLangs={doc.alternate_languages}
         lang={lang}
-        isPreview={preview.isActive}
+        menu={preview.isActive}
       >
         <SliceZone sliceZone={doc.data.body} image={image.data.body}/>
       </Layout>

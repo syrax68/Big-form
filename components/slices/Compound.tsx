@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
-import Handle,{ Track, Tick } from "../component"; // example render components - source below
+// @ts-ignore
+import Handle,{ Track, Tick } from "../component.tsx"; // example render components - source below
 
 const sliderStyle = {
   position: "relative",
@@ -20,7 +21,7 @@ const railStyle = {
 
 const Compound = ({setState, defaultValue, text}) => {
     const [domain, setDomaine] = useState([1, 100]);
-    const handleChange=(event,value)=>{
+    const handleChange=(event)=>{
       setState(event);
     }
     return (
@@ -29,7 +30,7 @@ const Compound = ({setState, defaultValue, text}) => {
           mode={2}
           step={1}
           domain={domain}
-          onChange={(event,value)=>handleChange(event,value)}
+          onChange={(event)=>handleChange(event)}
           rootStyle={sliderStyle}
           values={defaultValue}
         >

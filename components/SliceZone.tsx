@@ -1,11 +1,15 @@
 import React, {useState, useEffect} from 'react';
+// @ts-ignore
 import QuestionInfo from './slices/QuestionInfo.tsx';
 import {
   Grid,
 }from '@material-ui/core';
-import question from '../pages/api/question';
-import nextQuestion from '../pages/api/nextQuestion';
-import firstQuestion from '../pages/api/firstQuestion';
+// @ts-ignore
+import question from '../pages/api/question.ts';
+// @ts-ignore
+import nextQuestion from '../pages/api/nextQuestion.ts';
+// @ts-ignore
+import firstQuestion from '../pages/api/firstQuestion.ts';
 import next from 'next';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
@@ -24,7 +28,7 @@ const SliceZone = ({ sliceZone , image}) => {
       lastAnswer.pop();
     }
     if(answer && answer[answer.length-1] == "duration"){
-      if(process.browser){
+      if((process as any).browser){
         localStorage.clear();
       }
     }
@@ -34,7 +38,7 @@ const SliceZone = ({ sliceZone , image}) => {
       <button type="button" hidden={answer.length === 0 || answer[answer.length-1] == "duration"} className="back" aria-label="Previous" onClick={handleBack}><ArrowBackIcon style={{color:'black'}}/></button>
       {answer[answer.length-1] == "duration"?
         <Grid item xs={12} md={12} lg={12} className="bloc-item">
-          <p style={{color:"red",textAlign:"center", fontWeight:"600"}}>Félicitations, vous pouvez désormais envoyer votre devis !</p>
+          <p className="end-text">Félicitations, vous pouvez désormais envoyer votre devis !</p>
         </Grid>
         :answer.length > 1?
         nextQuestion.map((item, key)=>

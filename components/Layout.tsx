@@ -1,14 +1,18 @@
 import React from 'react';
 import Head from 'next/head';
-import { prismicRepoName } from 'utils/prismicHelpers';
-import Header from './Header';
+// @ts-ignore
+import { prismicRepoName } from '../utils/prismicHelpers.tsx';
+// @ts-ignore
+import Header from './Header.tsx';
 
-const Layout = ({
-  children,
-  altLangs,
-  lang,
-  menu,
-}) => (
+interface Props {
+  children: Object;
+  altLangs: Object;
+  lang: Object;
+  menu: Object;
+}
+
+const Layout = ({children,altLangs,lang,menu}: Props): JSX.Element => (
   <>
     <Head>
       <meta charSet="utf-8" />
@@ -22,7 +26,6 @@ const Layout = ({
     </Head>
     <Header
       altLangs={altLangs}
-      currentLang={lang.currentLang}
       menu={menu}
     />
     <main>{children}</main>

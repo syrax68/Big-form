@@ -1,9 +1,9 @@
 import React from 'react';
-import { queryRepeatableDocuments } from 'utils/queries';
-import { Client, manageLocal } from 'utils/prismicHelpers';
-import useUpdatePreviewRef from 'utils/hooks/useUpdatePreviewRef';
-import { Layout } from 'components';
-
+import { queryRepeatableDocuments } from '../utils/queries';
+// @ts-ignore
+import { Client, manageLocal } from '../utils/prismicHelpers.tsx';
+import useUpdatePreviewRef from '../utils/hooks/useUpdatePreviewRef';
+import { Layout }  from '../components';
 /**
  * posts component
  */
@@ -17,7 +17,7 @@ const Page = ({ doc, lang, preview }) => {
       <Layout
         altLangs={doc.alternate_languages}
         lang={lang}
-        isPreview={preview.isActive}
+        menu={preview.isActive}
       >
       </Layout>
     );

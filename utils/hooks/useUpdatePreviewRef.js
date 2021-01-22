@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Cookies from 'js-cookie'
-import { prismicRepoName } from 'utils/prismicHelpers';
+import { prismicRepoName } from '../prismicHelpers.tsx';
 
 export default function useUpdatePreviewRef(preview, documentId) {
   const router = useRouter()

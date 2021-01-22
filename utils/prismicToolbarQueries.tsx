@@ -1,4 +1,5 @@
-import { Client } from 'utils/prismicHelpers';
+// @ts-ignore
+import { Client } from './prismicHelpers.tsx';
 
 export const pageToolbarDocs = (uid, ref = null, lang) => (async () => {
   const page = await Client().getByUID('page', uid, {ref, lang, fetch: 'page.display_title'})

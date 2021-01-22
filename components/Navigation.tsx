@@ -1,10 +1,9 @@
 import { default as NextLink } from 'next/link';
 import { RichText } from 'prismic-reactjs';
-import { hrefResolver } from 'prismic-configuration';
+import { hrefResolver } from '../prismic-configuration';
 
-const MenuLinks = ({ links = [] }) => {
-  if (links) {
-    return links.map((menuLink) => {
+const MenuLinks = ({ links = [] }):JSX.Element => <>
+  {links?links.map((menuLink) => {
       return (
         <li className="language-switcher" key={menuLink.link.id}>
           <NextLink
@@ -15,9 +14,8 @@ const MenuLinks = ({ links = [] }) => {
           </NextLink>
         </li>
       );
-    });
-  }
-};
+    }):null}
+  </>
 
 const Navigation = ({ menu }) =>
   menu ? <MenuLinks links={menu.data.menu_links} /> : null;
